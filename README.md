@@ -5,6 +5,14 @@ You can create a function with this in  postgresql.
 
 This time,it can complete one-way navigation.
 
+# Software Version: 
+
+|  software  | version 
+| ---------- | -------------  
+| postgresql | 9.6.3  
+| postgis    | 2.3.2   
+| pgrouting  | 2.1.0        
+
 # Usage
 
 ## Step 1.
