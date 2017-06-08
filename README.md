@@ -24,7 +24,7 @@ add pgr_fromatob function to your database
 ## Step 3.
 SQL Usage:
 ```
-SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide', 0.0001,'102.73590087890626', '36.13787471840729', '103.06686401367188','36.13787471840729');
+SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide','102.73590087890626', '36.13787471840729', '103.06686401367188','36.13787471840729');
 ```
 
 ## Step 4.
