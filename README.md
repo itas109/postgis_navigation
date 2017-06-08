@@ -33,5 +33,7 @@ SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide', 0.0
 
 ## Links
 
-* [itas109 Blog](http://blog.cadn.net/itas109)
-* [longshengguoji Blog](http://blog.csdn.net/longshengguoji/article/details/46793111)
+* [itas109 Blog](http://blog.csdn.net/itas109)
+
+## Reference
+* http://blog.csdn.net/longshengguoji/article/details/46793111
