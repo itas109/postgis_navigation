@@ -28,17 +28,18 @@ SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide','102
 ```
 
 ## Step 4.
-* result:
+### result
 ![image](https://github.com/itas109/postgis_navigation/raw/master/navigation_0.png)
+![image](https://github.com/itas109/postgis_navigation/raw/master/navigation_1.png)
 
 # History
 ----------------------------------------------------
-* Version:1.0.0
+## Version:1.0.0
 
 * First Version
 
 ----------------------------------------------------
-* Version:1.1.0
+## Version:1.1.0
 
 * reconstruction code
 * allow mutilinestring as result,so the path is more accurate
