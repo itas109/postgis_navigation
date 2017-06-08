@@ -28,7 +28,7 @@ SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide', 0.0
 ```
 
 ## Step 4.
-result
+* result:
 ![image](https://github.com/itas109/postgis_navigation/raw/master/navigation_0.png)
 
 # History
