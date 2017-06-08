@@ -3,6 +3,8 @@
 This project is used to navigation with postgis and pgrouting in postgresql.
 You can create a function with this in  postgresql.
 
+This time,it can complete one-way navigation.
+
 # Usage
 
 ## Step 1.
@@ -26,10 +28,10 @@ SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide', 0.0
 ----------------------------------------------------
 # Contacting
 
-Email:itas109@qq.com
-QQ Group:129518033
+* Email:itas109@qq.com
+* QQ Group:129518033
 
 ## Links
 
 * [itas109 Blog](http://blog.cadn.net/itas109)
-
+* [longshengguoji Blog](http://blog.csdn.net/longshengguoji/article/details/46793111)
