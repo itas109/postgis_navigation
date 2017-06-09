@@ -24,7 +24,10 @@ add pgr_fromatob function to your database
 ## Step 3.
 SQL Usage:
 ```
-SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide','102.73590087890626', '36.13787471840729', '103.06686401367188','36.13787471840729');
+SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('102.73590087890626', '36.13787471840729', '103.06686401367188','36.13787471840729','line_guide',true,'geom');
+```
+```
+SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('102.73590087890626', '36.13787471840729', '103.06686401367188','36.13787471840729');
 ```
 
 ## Step 4.
@@ -47,6 +50,13 @@ SELECT ST_AsGeoJson(pgr_fromatob) AS geojson FROM pgr_fromAtoB('line_guide','102
 * set pgr_dijkstra only for directed
 * fixed un-directed problem
 * fixed on path sub problem 
+
+----------------------------------------------------
+## Version:1.1.1
+
+* function add default parm
+* function add some parms
+* add prepare line of start and end line to result
 
 ----------------------------------------------------
 # Contacting
