@@ -46,7 +46,7 @@ begin
     -- set length
     -- UPDATE line_guide SET length = ST_Length(data);
 
-		-- ******************** step 1 start ****************************** 
+	-- ******************** step 1 start ****************************** 
 
     -- find nearest start line and start target id in topology
     execute 'select data,target  from ' ||tbl||	' 
@@ -66,11 +66,11 @@ begin
     if (v_startLine is null) or (v_endLine is null) then  
         return null;  
     end if ;  
-		-- ******************** step 1 end ******************************
+	-- ******************** step 1 end ******************************
 
-		-- ******************** step 2 start ******************************
+	-- ******************** step 2 start ******************************
   
-		-- start point nearest point at start line
+	-- start point nearest point at start line
     select  ST_ClosestPoint(v_startLine, ST_Geometryfromtext('point('|| startx ||' ' || starty ||')')) into v_startpoint;  
 		-- end point nearest point at end line
     select  ST_ClosestPoint(v_endLine, ST_GeometryFromText('point('|| endx ||' ' || endy ||')')) into v_endpoint;  
@@ -79,11 +79,11 @@ begin
 	  select  ST_LineLocatePoint(v_startLine, v_startpoint) into v_perStart;  
     select ST_Line_SubString(v_startLine,v_perStart, 1) into v_perStartLine;
 
-		-- sub v_endLine to v_perEndLine
+	-- sub v_endLine to v_perEndLine
     select  ST_LineLocatePoint(v_endLine, v_endpoint) into v_perEnd;  
     select ST_Line_SubString(v_endLine,0, v_perEnd) into v_perEndLine;  
   
-		--  if v_startLine equal v_endLine,and v_perStart > v_perEnd, represent path is opposite
+	--  if v_startLine equal v_endLine,and v_perStart > v_perEnd, represent path is opposite
     if (v_startLine = v_endLine) and (v_perStart > v_perEnd) then  
         return null;  
     end if ;  
@@ -97,18 +97,18 @@ begin
 
     -- ******************** step 3 start ******************************
 
-		-- get prepare line of start and end point to closed line point
-		select ST_X(v_startpoint),ST_Y(v_startpoint) into v_preStartLineX,v_preStartLineY;
-		select ST_GeomFromText('LINESTRING('|| startx ||' ' || starty ||',' || v_preStartLineX ||' ' || v_preStartLineY ||')') into v_preStartLine;
-		select ST_X(v_endpoint),ST_Y(v_endpoint) into v_preEndLineX,v_preEndLineY;
-		select ST_LineFromText('LINESTRING('|| endx ||' ' || endy ||',' || v_preEndLineX ||' ' || v_preEndLineY ||')') into v_preEndLine;
-		-- ******************** step 3 end ******************************
+	-- get prepare line of start and end point to closed line point
+	select ST_X(v_startpoint),ST_Y(v_startpoint) into v_preStartLineX,v_preStartLineY;
+	select ST_GeomFromText('LINESTRING('|| startx ||' ' || starty ||',' || v_preStartLineX ||' ' || v_preStartLineY ||')') into v_preStartLine;
+	select ST_X(v_endpoint),ST_Y(v_endpoint) into v_preEndLineX,v_preEndLineY;
+	select ST_LineFromText('LINESTRING('|| endx ||' ' || endy ||',' || v_preEndLineX ||' ' || v_preEndLineY ||')') into v_preEndLine;
+	-- ******************** step 3 end ******************************
 
-		-- ******************** step 4 start ******************************
+	-- ******************** step 4 start ******************************
 
     -- get dijkstra path
-		-- pgr_dijkstra(text sql, integer source, integer target,boolean directed, boolean has_rcost);
-		-- we set directed true.
+	-- pgr_dijkstra(text sql, integer source, integer target,boolean directed, boolean has_rcost);
+	-- we set directed true.
     execute 'SELECT st_linemerge(st_union(b.'||topology_geom||')) ' || 
     'FROM pgr_dijkstra(  
     ''SELECT '||topology_id||' as id, '||topology_source||', '||topology_target||', '||topology_length||' as cost FROM ' || tbl ||''','  
@@ -125,7 +125,7 @@ begin
     end if;
     -- ******************** step 4 end ******************************
 
-		-- ******************** step 5 start ******************************
+	-- ******************** step 5 start ******************************
 
     -- v_preStartLine,v_startLine,v_res,v_endLine,,v_preEndLine merge 
     -- we allow the result is mutilinestring
